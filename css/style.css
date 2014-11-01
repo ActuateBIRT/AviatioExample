@@ -1,0 +1,811 @@
+html{
+    height: 100%;
+    overflow: hidden;
+    -webkit-tap-highlight-color: rgba(0,0,0,0); 
+}
+body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    cursor: default;
+    background: #F4F4F4;
+    font-family: 'Raleway', sans-serif; 
+    cursor: default;
+}
+
+/*===========================================
+=            Content Page CSS            =
+===========================================*/
+
+#content {
+  margin: auto;
+}
+#mainDiv {
+  clear:none;
+  float: left;
+  width: 832px;
+  height: 100%;
+  position: relative;
+  background: #FFFFFF;
+}
+#leftSidebarDiv {
+  clear:none;
+  float:left;
+  width: 192px;
+  height: 100%;
+  position:relative;
+  background : #F4F4F4;
+}
+#West,
+#Midwest,
+#South,
+#Northeast{
+  clear:left;
+  float:left;
+  width:192px;
+  height: 170px;
+  z-index: 100;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+#West{
+  background-image: url("../images/west_nonselected.png");
+}
+#Midwest{
+  background-image: url("../images/midwest_nonselected.png");
+}
+#South{
+  background-image: url("../images/south_nonselected.png");
+}
+#Northeast{
+  background-image: url("../images/northeast_nonselected.png");
+}
+#West:hover{
+  background-image: url("../images/west_selected.png");
+}
+#Midwest:hover{
+  background-image: url("../images/midwest_selected.png");
+}
+#South:hover{
+  background-image: url("../images/south_selected.png");
+}
+#Northeast:hover{
+  background-image: url("../images/northeast_selected.png");
+}
+
+.hide {
+  display : none;
+}
+
+.WestClass,
+.MidwestClass,
+.SouthClass,
+.NortheastClass{
+  margin: auto;
+  left : 192px;
+  z-index : 1000;    
+  display : block;
+  position: absolute; 
+  border-radius: 5px;
+}
+.WestClass ul,
+.MidwestClass ul,
+.SouthClass ul,
+.NortheastClass ul{
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.WestClass li,
+.MidwestClass li,
+.SouthClass li,
+.NortheastClass li{
+  height: 25px;
+  width: 150px;
+  color: white;
+  display:block;
+  padding: 7px 15px;
+  line-height: 25px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.WestClass:before,
+.MidwestClass:before,
+.SouthClass:before,
+.NortheastClass:before {
+  right: 100%;
+  width: 0;
+  height: 0;
+  content: " ";
+  border-width: 10px;
+  margin-top: -10px;
+  position: absolute;
+  pointer-events: none;
+  border: 10px solid transparent;
+}
+
+.WestClass {
+  top : 20px;
+  background : #4baee2;
+}
+.WestClass:before {
+  top: 10%;
+  border-right-color: #4baee2;
+}
+.MidwestClass {
+  top : 50px;
+  background : #ea6f3e;
+}
+.MidwestClass:before {
+  top: 40%;
+  border-right-color: #ea6f3e;
+}
+.SouthClass {
+  top : 5px;
+  background : #b75ed4;
+}
+.SouthClass:before {
+  top: 60%;
+  border-right-color: #b75ed4;
+}
+.NortheastClass {
+  top : 300px; 
+  background : #74be3a;
+}
+.NortheastClass:before {
+  top: 80%;
+  border-right-color: #74be3a;
+}
+.WestClass li:hover{
+  background: #94d3ef;
+}
+.MidwestClass li:hover{
+  background: #f1b18D;
+}
+.SouthClass li:hover{
+  background: #d59fe8;
+}
+.NortheastClass li:hover{
+  background: #b1da94;
+}
+.WestTitle {
+ color : #4baee2;
+}
+.MidwestTitle {
+ color : #ea6f3e;
+}
+.SouthTitle {
+  color : #b75ed4;
+}
+.NortheastTitle {
+  color: #74be3a;
+}
+
+/*==========  Main Container Class  ==========*/
+#container{
+  top: 0px;
+  left: 0px;
+  z-index: 10;
+  height:680px;
+  width: 832px;
+  overflow: auto;
+  position: absolute;
+}
+#appTitle{
+  top: 10px;
+  left: 50px;
+  z-index: 10;
+  width: auto;
+  height: auto;
+  overflow: auto;
+  font-size: 2em;
+  text-align: left;
+  font-size: 40px;
+  font-weight: 300;
+  position: absolute;
+  text-transform: uppercase;
+}
+#overlay {
+  top: 0px;
+  left: 0px;
+  z-index: 100;
+  height:680px;
+  width: 832px;
+  display: none;
+  overflow: hidden;
+  position: absolute;
+  background : #FFFFFF;
+}
+
+#overlay p{
+  width: 832px;
+  line-height: 680px;
+  text-align: center;
+  font-size: 40px;
+  font-weight: 500;
+  position: absolute;
+  color : #dddddd;
+}
+
+.flight1, .flight2, .flight3{
+  width: 100px;
+  height: 100px;
+  z-index: 1000;
+  opacity: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  animation: animationFrames ease 3s;
+  animation-iteration-count: infinite;
+  -webkit-animation: animationFrames ease 3s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-transform-origin: 50% 50%;
+  -moz-animation: animationFrames ease 3s;
+  -moz-animation-iteration-count: infinite;
+  -moz-transform-origin: 50% 50%;
+  -o-animation: animationFrames ease 3s;
+  -o-animation-iteration-count: infinite;
+  -o-transform-origin: 50% 50%;
+  -ms-animation: animationFrames ease 3s;
+  -ms-animation-iteration-count: infinite;
+  -ms-transform-origin: 50% 50%;
+}
+.flight1{
+  background-image: url("../images/airplane1a.png");
+  } 
+.flight2 {
+  background-image: url("../images/airplane2a.png");
+  -webkit-animation-delay : 0.5s;
+  -moz-animation-delay : 0.5s;
+  -ms-animation-delay : 0.5s;
+  -o-animation-delay : 0.5s;
+  animation-delay : 0.5s;
+}
+.flight3{
+  background-image: url("../images/airplane3a.png");
+  -webkit-animation-delay : 1s;
+  -moz-animation-delay : 1s;
+  -ms-animation-delay : 1s;
+  -o-animation-delay : 1s;
+  animation-delay : 1s;
+}
+
+
+@keyframes animationFrames{
+  0% {
+    opacity: 1;
+    transform:  translate(-0px,550px);
+  }
+  100% {
+    opacity: 1;
+    transform:  translate(832px,-100px);
+  }
+}
+
+@-moz-keyframes animationFrames{
+  0% {
+    opacity: 1;
+    -moz-transform:  translate(-0px,550px);
+  }
+  100% {
+    opacity: 1;
+    -moz-transform:  translate(832px,-100px);
+  }
+}
+
+@-webkit-keyframes animationFrames {
+  0% {
+    opacity: 1;
+    -webkit-transform:  translate(-0px,550px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform:  translate(832px,-100px);
+  }
+}
+
+@-o-keyframes animationFrames {
+  0% {
+    opacity: 1;
+    -o-transform:  translate(-0px,550px);
+  }
+  100% {
+    opacity: 1;
+    -o-transform:  translate(832px,-100px);
+  }
+}
+
+@-ms-keyframes animationFrames {
+  0% {
+    opacity: 1;
+    -ms-transform:  translate(-0px,550px);
+  }
+  100% {
+    opacity: 1;
+    -ms-transform:  translate(832px,-100px);
+  }
+}
+#nextButton {
+  top: 15px;
+  right: 20px;
+  z-index: 10;
+  height: 33px;
+  width: 149px;
+  overflow: auto;
+  font-size: 12px;
+  line-height: 33px;
+  font-weight: 700;
+  text-align: right;
+  padding-right: 50px;
+  position: absolute;
+  text-transform: uppercase;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+#backButton {
+  top: 15px;
+  z-index: 10;
+  right: 180px;
+  height: 33px;
+  width: 149px;
+  overflow: auto;
+  font-size: 12px;
+  line-height: 33px;
+  font-weight: 700;
+  text-align: left;
+  padding-left: 50px;
+  position: absolute;
+  text-transform: uppercase;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+#busiest_worst {
+  top: 70px;
+  left: 50px;
+  z-index: 10;
+  height: 70px;
+  width: 732px;
+  overflow: auto;
+  position: absolute;
+}
+#percentage {
+  top: 145px;
+  left: 50px;
+  z-index: 10;
+  width: 575px;
+  height: 245px;
+  overflow: auto;
+  position: absolute;
+}
+#average {
+  top: 415px;
+  left: 50px;
+  z-index: 10;
+  width: 575px;
+  height: 250px;
+  overflow: auto;
+  position: absolute;
+}
+#causes {
+  top: 140px;
+  right: 50px;
+  width: 130px;
+  height: 520px;
+  overflow: auto;
+  position: absolute;
+}
+#timeStamp {
+  bottom: 15px;
+  right: 20px;
+  width: 200px;
+  height: auto;
+  font-size: 8px;
+  text-align: right;
+  overflow: auto;
+  position: absolute;
+  color: #999999;
+}
+
+/*======================================
+=           Start Page CSS            =
+======================================*/
+#startPage{
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+#startContent {
+  top: 100px;
+  width: 100%;
+  position: absolute;
+}
+#startPage h1{
+  font-weight: 300;
+  font-size: 46px;
+  color : #555555;
+  text-align: center;
+  margin: 0;
+}
+h1 span{
+  font-weight: 800;
+}
+#startPage p{
+  font-weight: 300;
+  font-size: 20px;
+  color : #BBBBBB;
+  text-align: center;
+}
+#startNav{
+  width: 800px;
+  height: 200px;
+  margin: 0 auto;
+}
+#startWest,
+#startMidwest,
+#startSouth,
+#startNortheast{
+  clear:none;
+  float:left;
+  width:200px;
+  height: 200px;
+  z-index: 1000;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+#startWest{
+  background-image: url("../images/w_unselected_lg.png");
+}
+#startMidwest{
+  background-image: url("../images/mw_unselected_lg.png");
+}
+#startSouth{
+  background-image: url("../images/s_unselected_lg.png");
+}
+#startNortheast{
+  background-image: url("../images/ne_unselected_lg.png");
+}
+#startWest:hover{
+  background-image: url("../images/west_start_selected.png");
+}
+#startMidwest:hover{
+  background-image: url("../images/midwest_start_selected.png");
+}
+#startSouth:hover{
+  background-image: url("../images/south_start_selected.png");
+}
+#startNortheast:hover{
+  background-image: url("../images/northeast_start_selected.png");
+}
+#startMenu{
+  height : 250px;
+  width : 1000px;
+  margin: 0 auto;
+  position:relative;
+}
+#startPage .WestClass,
+#startPage .MidwestClass,
+#startPage .SouthClass,
+#startPage .NortheastClass{
+  width: 540px;
+  height : auto;
+}
+#startPage .WestClass li,
+#startPage .MidwestClass li,
+#startPage .SouthClass li,
+#startPage .NortheastClass li{
+  float:left;
+}
+#startPage .WestClass:before,
+#startPage .MidwestClass:before,
+#startPage .SouthClass:before,
+#startPage .NortheastClass:before {
+  width: 0;
+  height: 0;
+  content: " ";
+  border-width: 10px;
+  margin-top: -10px;
+  position: absolute;
+  pointer-events: none;
+  border: 10px solid transparent;
+}
+#startMenu .WestClass {
+  top : 10px;
+  left : 10px;
+}
+#startMenu .WestClass:before {
+  top: -5%;
+  right: 65%;
+  border-bottom-color: #4baee2;
+}
+#startMenu .MidwestClass {
+  top : 10px;
+  left : 150px;
+}
+#startMenu .MidwestClass:before {
+  top: -6%;
+  right: 52%;
+  border-bottom-color: #ea6f3e;
+}
+#startMenu .SouthClass {
+  top : 5px;
+  left : 350px;
+}
+#startMenu .SouthClass:before {
+  top: -3.6%;
+  right: 52%;  
+  border-bottom-color: #b75ed4;
+}
+#startMenu .NortheastClass {
+  top : 10px;
+  left : 450px;
+}
+#startMenu .NortheastClass:before {
+  top: -8%;
+  right: 32%;  
+  border-bottom-color: #74be3a;
+}
+
+/*======================================
+=            Desktop Fullscreen     =
+======================================*/
+@media only screen
+and (min-width : 1025px) {
+  /* Styles */
+  #content {
+    width: 1216px;
+    height: 100%;
+  }
+  #rightSidebarDiv{
+    clear:none;
+    float:right;
+    width   : 192px;
+    min-height: 100%;
+    background : #F4F4F4;
+    position:relative;
+  }
+}
+/*======================================
+=            Ipad/Tablet Landscape      =
+======================================*/
+@media only screen
+and (min-width : 801px)
+and (max-width : 1024px){
+  
+  #content {
+    width: 1024px;
+    height: 100%;
+  }
+  #overlay p{
+  width: 832px;
+  line-height: 550px;
+  text-align: center;
+  font-size: 40px;
+  font-weight: 500;
+  position: absolute;
+  color : #dddddd;
+  }
+  #startWest:hover{
+    background-image: url("../images/w_unselected_lg.png");
+  }
+  #startMidwest:hover{
+    background-image: url("../images/mw_unselected_lg.png");
+  }
+  #startSouth:hover{
+    background-image: url("../images/s_unselected_lg.png");
+  }
+  #startNortheast:hover{
+    background-image: url("../images/ne_unselected_lg.png");
+  }
+  #West:hover{
+    background-image: url("../images/west_nonselected.png");
+  }
+  #Midwest:hover{
+    background-image: url("../images/midwest_nonselected.png");
+  }
+  #South:hover{
+    background-image: url("../images/south_nonselected.png");
+  }
+  #Northeast:hover{
+    background-image: url("../images/northeast_nonselected.png");
+  }
+  #startContent {
+    top: 100px;
+  }
+}
+
+/*======================================
+=            Ipad/Tablet Portrait      =
+======================================*/
+
+@media only screen
+and (max-width : 800px) {
+  /*===========================================
+  =            Start Page CSS            =
+  ===========================================*/
+  #startNav{
+    width: 400px;
+    height: 400px;
+    z-index: 1000;
+  }
+  #startContent {
+    top : 200px;
+  }
+  #startMenu{
+    width : 700px;
+  }
+  #startWest:hover{
+    background-image: url("../images/w_unselected_lg.png");
+  }
+  #startMidwest:hover{
+    background-image: url("../images/mw_unselected_lg.png");
+  }
+  #startSouth:hover{
+    background-image: url("../images/s_unselected_lg.png");
+  }
+  #startNortheast:hover{
+    background-image: url("../images/ne_unselected_lg.png");
+  }
+  #startPage .WestClass,
+  #startPage .MidwestClass,
+  #startPage .SouthClass,
+  #startPage .NortheastClass{
+    width: 180px;
+    height : auto;
+  }
+  #startPage .WestClass {
+    top : -400px;
+    left : -10px;
+  }
+  #startPage .WestClass:before {
+    top: 17%;
+    left: 100%;
+    border-left-color: #4baee2;
+    border-bottom-color: transparent;
+  }
+  #startPage .MidwestClass {
+    top : -400px;
+    left : 525px;
+  }
+  #startPage .MidwestClass:before {
+    top: 20%;
+    left: -10.5%;
+    border-right-color: #ea6f3e;
+    border-bottom-color: transparent;
+  }
+  #startPage .SouthClass {
+    top : -500px;
+    left : -10px;
+  }
+  #startPage .SouthClass:before {
+    top: 55%;
+    left: 100%;
+    border-left-color: #b75ed4;
+    border-bottom-color: transparent;
+  }
+  #startPage .NortheastClass {
+    top : -400px;
+    left : 525px;
+  }
+  #startPage .NortheastClass:before {
+    top: 80%;
+    left: -10.5%;
+    border-right-color: #74be3a;
+    border-bottom-color: transparent;
+  }
+  /*===========================================
+  =            Content Page CSS            =
+  ===========================================*/
+  #content {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  #mainDiv {
+    clear: none;
+    clear:left;
+    width: 100%;
+    height: 768px;
+    position: absolute;
+  }
+  #leftSidebarDiv {
+    clear:left;
+    float: left;
+    bottom: 0;
+    width: 100%;
+    height: 18.75%;
+    position:absolute;
+  }
+  #West:hover{
+    background-image: url("../images/west_nonselected.png");
+  }
+  #Midwest:hover{
+    background-image: url("../images/midwest_nonselected.png");
+  }
+  #South:hover{
+    background-image: url("../images/south_nonselected.png");
+  }
+  #Northeast:hover{
+    background-image: url("../images/northeast_nonselected.png");
+  }
+  .WestClass {
+    top : -500px;
+    left : 15px;
+  }
+  .WestClass:before {
+    top: 102%;
+    left: 40%;
+    border-top-color: #4baee2;
+    border-right-color: transparent;
+  }
+  .MidwestClass {
+    top : -461px;
+    left : 200px;
+  }
+  .MidwestClass:before {
+    top: 102%;
+    left: 40%;
+    border-top-color: #ea6f3e;
+    border-right-color: transparent;
+  }
+  .SouthClass {
+    top : -668px;
+    left : 385px;
+  }
+  .SouthClass:before {
+    top: 101.5%;
+    left: 45%;
+    border-top-color: #b75ed4;
+    border-right-color: transparent;
+  }  
+  .NortheastClass {
+    top : -345px;
+    left : 570px;
+  }
+  .NortheastClass:before {
+    top: 103%;
+    left: 50%;
+    border-top-color: #74be3a;
+    border-right-color: transparent;
+  }
+  #West,
+  #Midwest,
+  #South,
+  #Northeast{
+      width:25%;
+      clear:none;
+      height: 192px;
+  }
+  #overlay {
+    height:768px;
+    width: 768px;  
+  }
+  #container{
+    width: 100%;
+    height:100%;
+  }
+  #appTitle{
+    top: 65px;
+    left: 15px;
+  }
+  #busiest_worst {
+    top: 130px;
+    left: 18px;
+  }
+  #nextButton{
+    right : 5px;
+  }
+  #backButton{
+    right : 165px;
+  }
+  #percentage {
+    top: 220px;
+    left: 18px;
+  }
+  #average {
+    top: 490px;
+    left: 18px;
+  }
+  #causes {
+    top: 220px;
+    left: 620px;
+  }
+}

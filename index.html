@@ -1,0 +1,88 @@
+<!doctype html>
+<!-- saved from url=(0014)about:internet -->
+<html lang="en"  ng-app="flightApp" ng-controller="loginCtrl" ng-init="login()">
+<head>
+  <meta charset="utf-8">
+  <title>FlightDataApp</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <link href='http://fonts.googleapis.com/css?family=Raleway:100,200,300,400,700,800' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="css/style.css"> 
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+  <script src="js/angular.min.js"></script>
+  <script src="js/angular-loader.min.js"></script>
+  <script src="js/angular-resource.min.js"></script>
+  <script src="js/factory.js"></script> 
+  <script src="js/services.js"></script>
+  <script src="js/main.js"></script>  
+  <script src="js/controller.js"></script>  
+</head>
+<body>
+    <div id="js3_region_name" style="display:none; ">{{currentRegion}}</div>
+    <div id="startPage" ng-class="startClass">
+      <div id="startContent">
+        <h1>Welcome to <span>AVIATIO</span></h1>
+        <p>Select a region to start learning about flight delays in each state.</p>
+        <div id="startNav">
+          <div id="startWest" ng-click="button_clicked || showState('West', 'start')">
+          </div>
+          <div id="startMidwest" ng-click="button_clicked || showState('Midwest', 'start')"></div>
+          <div id="startSouth" ng-click="button_clicked || showState('South', 'start')"></div>
+          <div id="startNortheast" ng-click="button_clicked || showState('Northeast', 'start')"></div>
+        </div>
+        <div id="startMenu">
+          <div id="state" ng-class="statePopOverClass" ng-cloak>
+             <ul  ng-repeat="value in states" ng-if="value.split('|')[2] == selectedRegion" >
+                <li ng-click='selectState(selectedRegion, value.split("|")[1])'>
+                  {{
+                    value.split("|")[1];
+                  }}                  
+                </li>
+              </ul>
+          </div>
+        </div>    
+      </div>
+    </div>
+    <div id="content" ng-class="contentClass">
+        <div id="leftSidebarDiv">
+          <div id="West" ng-click="button_clicked || showState('West')" ></div>
+          <div id="Midwest" ng-click="button_clicked || showState('Midwest')"></div>
+          <div id="South" ng-click="button_clicked || showState('South')"> </div>
+          <div id="Northeast" ng-click="button_clicked || showState('Northeast')"></div>
+          <div id="state" ng-class="statePopOverClass" ng-cloak>
+             <ul  ng-repeat="value in states" ng-if="value.split('|')[2] == selectedRegion" >
+              <li ng-click='selectState(selectedRegion, value.split("|")[1])'>
+                {{
+                  value.split("|")[1];
+                }}                  
+              </li>
+            </ul>
+          </div>
+        </div>        
+        <div id="mainDiv" ng-click="bodyClick()">
+          <div id="overlay" ng-click="bodyClick()">
+            <p>Loading...</p>
+            <div class="flight1"></div>
+            <div class="flight2"></div>
+            <div class="flight3"></div>
+          </div>
+          <div id="container" ng-click="bodyClick()">
+            <div id="appTitle" ng-class="title" ng-cloak>{{currentState}}</div>
+            <div id="nextButton" ng-click="button_clicked || nextState()" ng-disabled="button_clicked" 
+              ng-mouseover="chooseHoverColor(rightIndex,'nextButton', 'next', true)" 
+              ng-mouseleave="chooseHoverColor(rightIndex,'nextButton', 'next', false)" ng-class="rightNavigationText"
+              ng-cloak>{{rightState}}</div>
+            <div id="backButton" ng-click="button_clicked || previousState()" ng-disabled="button_clicked" 
+              ng-mouseover="chooseHoverColor(leftIndex,'backButton', 'prev', true)" 
+              ng-mouseleave="chooseHoverColor(leftIndex,'backButton', 'prev', false)" ng-class="leftNavigationText"
+              ng-cloak>{{leftState}}</div>
+            <div id="busiest_worst" ng-click="bodyClick()"></div>
+            <div id="percentage" ng-click="bodyClick()"></div>
+            <div id="average" ng-click="bodyClick()"></div>
+            <div id="causes" ng-click="bodyClick()"></div>
+            <div id="timeStamp" ng-bind="timestamp"></div>
+          </div>
+        </div>
+        <div id="rightSidebarDiv" ng-click="bodyClick()"></div>
+    </div>
+</body>
+</html>
