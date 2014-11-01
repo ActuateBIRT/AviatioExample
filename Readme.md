@@ -1,5 +1,5 @@
 #BIRT Aviatio
-============
+-------
 
 ##Overview
 This HTML and JavaScript example illustrates how to integrate BIRT iHub into a responsive, mobile web application. Two BIRT APIs, the REST API, and the JavaScript API (JSAPI) retrieve data and visualizations from a demonstration BIRT iHub 3.1 server. The iHub server resources used by this example are included with the source code if you want to use your own BIRT iHub server.
