@@ -8,8 +8,8 @@ This web application uses the Angular JavaScript frameworks to display HTML cont
 
 ## Quick Start
 1. Download the source code from this site.
-2. Access the FlightApp folder and files through your favorite web server such as NanoHTTPD or Apache. Web browser cross-origin security restrictions require a web server to load the files used by this web application.
-3. Use a web browser to navigate to the FlightApp folder.
+2. Access the AviatioApp folder and files through your favorite web server such as NanoHTTPD or Apache. Web browser cross-origin security restrictions require a web server to load the files used by this web application.
+3. Use a web browser to navigate to the AviatioApp folder.
 5. Select a US Region from the list to view a list of state names.
 6. Select a state name to view a detailed report about flight delays.
 
