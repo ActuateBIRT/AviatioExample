@@ -408,6 +408,7 @@ body{
 /*======================================
 =           Start Page CSS            =
 ======================================*/
+
 #startPage{
   width: 100%;
   height: 100%;
@@ -554,6 +555,9 @@ and (min-width : 1025px) {
     width: 1216px;
     height: 100%;
   }
+  #phoneContent{
+    display: none;
+  }  
   #rightSidebarDiv{
     clear:none;
     float:right;
@@ -574,6 +578,9 @@ and (max-width : 1024px){
     width: 1024px;
     height: 100%;
   }
+  #phoneContent{
+    display: none;
+  }  
   #overlay p{
   width: 832px;
   line-height: 550px;
@@ -617,7 +624,8 @@ and (max-width : 1024px){
 ======================================*/
 
 @media only screen
-and (max-width : 800px) {
+and (max-width : 800px) 
+and (min-width : 601px){
   /*===========================================
   =            Start Page CSS            =
   ===========================================*/
@@ -626,6 +634,9 @@ and (max-width : 800px) {
     height: 400px;
     z-index: 1000;
   }
+  #phoneContent{
+    display: none;
+  }  
   #startContent {
     top : 200px;
   }
@@ -807,5 +818,66 @@ and (max-width : 800px) {
   #causes {
     top: 220px;
     left: 620px;
+  }
+}
+
+
+/*======================================
+=            Phone Design CSS      =
+======================================*/
+@media only screen
+and (max-width : 600px)
+and (orientation : portrait)
+{
+
+  #phoneContent{
+    top: 100px;
+    width: 100%;
+    position: absolute;
+    display: black;
+  }
+
+  #phoneContent h1{
+    margin: 10px;
+  }
+
+  #phoneImg{
+    width:150px;
+    height: 150px;
+    margin-left: auto ;
+    margin-right: auto ;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../images/colored_map.png");
+  }
+
+  #startContent{
+    display: none;
+  }
+
+}
+
+@media only screen
+and (max-width : 600px)
+and (orientation : landscape)
+{
+    #phoneContent{
+    top: 10px;
+    display: black;
+  }
+  #phoneImg{
+    width:150px;
+    height: 150px;
+    margin-left: auto ;
+    margin-right: auto ;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../images/colored_map.png");
+  }
+
+  #startContent{
+    display: none;
   }
 }
