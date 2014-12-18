@@ -1,15 +1,17 @@
 #BIRT Aviatio
-============
+-------
 
 ##Overview
 This HTML and JavaScript example illustrates how to integrate BIRT iHub into a responsive, mobile web application. Two BIRT APIs, the REST API, and the JavaScript API (JSAPI) retrieve data and visualizations from a demonstration BIRT iHub 3.1 server. The iHub server resources used by this example are included with the source code if you want to use your own BIRT iHub server.
 
-This web application uses the Angular JavaScript frameworks to display HTML content in a single HTML file and build previous and next links to navigate data displayed in the web page.   
+This web application uses the Angular JavaScript frameworks to display HTML content in a single HTML file and build previous and next links to navigate data displayed in the web page. A demonstration of this application is available at the following URL: http://aviatioexample.actuate.com/.
+
+![](/Screenshots/examples.png)
 
 ## Quick Start
 1. Download the source code from this site.
-2. Access the FlightApp folder and files through your favorite web server such as NanoHTTPD or Apache. Web browser cross-origin security restrictions require a web server to load the files used by this web application.
-3. Use a web browser to navigate to the FlightApp folder.
+2. Access the AviatioExample-aviatioMaster folder and files through your favorite web server such as NanoHTTPD or Apache. Web browser cross-origin security restrictions require a web server to load the files used by this web application.
+3. Use a web browser to navigate to the AviatioExample-aviatioMaster folder.
 5. Select a US Region from the list to view a list of state names.
 6. Select a state name to view a detailed report about flight delays.
 
@@ -39,11 +41,15 @@ This application uses JSAPI to complete the following tasks:
 * Load the report for the selected state into the BIRT viewer
 
 ## Documentation
-Additional information about integrating BIRT technology into applications is available at the following URL:
-http://developer.actuate.com/deployment-center/integrating-birt-into-applications/
+[Building Web Applications Using BIRT APIs](http://developer.actuate.com/be/documentation/ihub31-dev/WebApp/index.html) 
 
-Forums for discussing BIRT technologies are available at the following URL:
-http://developer.actuate.com/community/forum/
+[Learning about REST API](http://developer.actuate.com/resources/documentation/ihub31/rest-api/) 
+
+[Learning about JSAPI Integration](http://developer.actuate.com/resources/documentation/ihubftype/integration/) 
+
+[Forums for discussing BIRT technologies](http://developer.actuate.com/community/forum/) 
+
+[Additional information about integrating BIRT technology into applications](http://developer.actuate.com/deployment-center/integrating-birt-into-applications/) 
 
 ## Credits
 This example uses the following third party libraries:
