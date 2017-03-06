@@ -881,3 +881,12 @@ and (orientation : landscape)
     display: none;
   }
 }
+
+@media print {
+	#leftSidebarDiv { 
+		display: none; 
+	}
+	body {
+	    background: white;
+	}
+}  

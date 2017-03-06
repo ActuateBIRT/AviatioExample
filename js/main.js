@@ -2,45 +2,47 @@
 
 var mainCtrl = angular.module('mainApp', []);
 
-var restHost = "aviatioexample.actuate.com";
+var restHost = "localhost";
  
-var restPort = "\\:5000";
+var restPort = "\\:8000";
  
 var visuals = "visuals";
  
-var ihubHost = "aviatioexample.actuate.com";
+var ihubHost = "localhost";
  
 var ihubPort = ":8700";
 
+var authTokenValue = "missing";
+
 mainCtrl.constant('mainAppCtrl', {
 
-    login: 'http://' + restHost + restPort + '/ihub/v1/login',
+    login: 'http://' + restHost + restPort + '/api/v2/login',
 
-    folders: 'http://' + restHost + restPort + '/ihub/v1/folders',
+    folders: 'http://' + restHost + restPort + '/api/v2/folders',
 
-    files: 'http://' + restHost + restPort + '/ihub/v1/files/:fileId',
+    files: 'http://' + restHost + restPort + '/api/v2/files/:fileId',
 
-    downloadReport: 'http://' + restHost + restPort + '/ihub/v1/' + 'files',
+    downloadReport: 'http://' + restHost + restPort + '/api/v2/' + 'files',
 
-    reports: 'http://' + restHost + restPort + '/ihub/v1/' + visuals + '/:reportsId/:outputFormat',
+    reports: 'http://' + restHost + restPort + '/api/v2/' + visuals + '/:reportId/:outputFormat',
 
-    reportData: 'http://' + restHost + restPort + '/ihub/v1/' + visuals + '/:reportsId/data/:datasetname/?format=:format',
+    reportData: 'http://' + restHost + restPort + '/api/v2/' + visuals + '/:reportId/data/:datasetname/?format=:format',
 
-    reportBookmarks: 'http://' + restHost +restPort + '/ihub/v1/' + visuals + '/:reportsId/bookmarks',
+    reportBookmarks: 'http://' + restHost +restPort + '/api/v2/' + visuals + '/:reportId/bookmarks',
 
-    reportMetadata: 'http://' + restHost + restPort + '/ihub/v1/' + visuals + '/:reportsId/datasets',
+    reportMetadata: 'http://' + restHost + restPort + '/api/v2/files/:fileId/properties',
 
-    reportBookmarksData: 'http://' + restHost + restPort + '/ihub/v1/' + visuals + '/:reportsId/bookmarks/:bookmarkName',
+    reportBookmarksData: 'http://' + restHost + restPort + '/api/v2/' + visuals + '/:reportId/bookmarks/:bookmarkName',
 
-    reportMetadataData: 'http://' + restHost + restPort + '/ihub/v1/' + visuals + '/:reportsId/datasets/:datasetname',
+    reportMetadataData: 'http://' + restHost + restPort + '/api/v2/dataobjects/:reportId/:datasetname',
 
-    downloadFile: 'http://' + restHost + restPort + '/ihub/v1/' + visuals + '/:reportsId/download',
+    downloadFile: 'http://' + restHost + restPort + '/api/v2/files/:reportId/download',
 
-    dataObject: 'http://' + restHost + restPort + '/ihub/v1/dataobject/:dataObjectId',
+    dataObject: 'http://' + restHost + restPort + '/api/v2/dataobjects/:dataObjectId',
 
-    dataObjectElement: 'http://' + restHost + restPort + '/ihub/v1/dataobject/:dataObjectId/:dataobjectElement',
+    dataObjectElement: 'http://' + restHost + restPort + '/api/v2/dataobjects/:dataObjectId/:dataobjectElement',
 
-    executeReport : 'http://' + restHost + restPort + '/ihub/v1/' + visuals + '/:reportsId/execute', 
+    executeReport : 'http://' + restHost + restPort + '/api/v2/jobs/execute/', 
 
     jsapiUrl: 'http://' + ihubHost  + ihubPort +  '/iportal/jsapi',
 
@@ -50,9 +52,9 @@ mainCtrl.constant('mainAppCtrl', {
 
     idle_time : '20',
 
-    username : "flightdemo",
+    username : "Administrator",
 
-    password: "Demo1234"   
+    password: ""   
 
 });
 

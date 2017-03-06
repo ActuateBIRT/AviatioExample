@@ -5,19 +5,15 @@
     var mainApp = angular.module('flightApp', ['mainApp', 'myApp.services', 'MyFactory']);
 
 
-
     mainApp.controller('loginCtrl', ['API','$scope', '$http', '$location', '$rootScope', 'dataService', 'mainAppCtrl', '$interval','$filter',
-
 
 
         function (API,$scope, $http, $location, $rootScope, dataService, mainAppCtrl,$interval, $filter) {
 
             var headers = {
-
                 "Content-Type": "application/json; charset=utf-8"
-
             };
-
+            
             $rootScope.idleTime = new Date();
 
             $scope.error = {};
@@ -183,37 +179,38 @@
 
                         $scope.response = dataResponse;
 
-                        if (dataResponse.AuthId) {
+                        if (dataResponse.authToken) {
 
                             $rootScope.userData = dataResponse;
 
-                            $rootScope.AuthId = dataResponse.AuthId;
-
+                            $rootScope.AuthId = dataResponse.authToken;
+                            
+                            authTokenValue = dataResponse.authToken;
+                            
+                            $http.defaults.headers.common['AuthToken'] = authTokenValue;
+ 
                             params = {           
 
-                                search :"/Resources/Data Objects/flight delay.DATA",
+                                search :"/Resources/Data Objects/flight delay.DATA"
 
-                                authId: $rootScope.AuthId
-
-                            };
+                            }; 
 
 
-
+                                   
                             API.DownloadReport.query(params,
 
                                 function (dataResponse) {
 
-                                    if (dataResponse.TotalCount > 0) {
+                                    if (dataResponse.totalCount > 0){
 
                                         params = {
 
-                                          dataObjectId : dataResponse.ItemList.File[0].Id,
+                                          dataObjectId : dataResponse.itemList.file[0].id,
 
-                                          dataobjectElement : "geographic",
+                                          dataobjectElement : "geographic"
 
-                                          authId: $rootScope.AuthId
+                                        }; 
 
-                                        };
 
                                         API.DownloadDataObjectElement.query(params, 
 
@@ -309,7 +306,7 @@
 
                                             function (errorResponse) {
 
-                                                if (errorResponse.data.error.code == "6001") {
+                                                if (errorResponse.data.code == "25018") {
 
                                                     $scope.login();
 
@@ -409,7 +406,6 @@
 
                     search : fileName,
 
-                    authId: $rootScope.AuthId
 
                 };
 
@@ -421,21 +417,20 @@
 
 
 
-                        if (dataResponse.TotalCount > 0) {
+                        if (dataResponse.totalCount > 0) {
 
                             params = {           
 
-                                fileId : dataResponse.ItemList.File[dataResponse.ItemList.File.length - 1].Id,
+                                fileId : dataResponse.itemList.file[dataResponse.itemList.file.length - 1].id,
 
-                                authId: $rootScope.AuthId
 
                             };
 
-                            API.Files.query(params,
+                            API.ReportMetadata.query(params,
 
                                 function (dataResponse) {
 
-                                   var ts = dataResponse.File.TimeStamp;
+                                   var ts = dataResponse.timeStamp;
 
                                    $scope.timestamp = "Generated " + $filter('date')(new Date(ts), "MM/dd/yyyy 'at' h:mma");
 
@@ -453,7 +448,7 @@
 
                                 function (errorResponse) {
 
-                                    if (errorResponse.data.error.code == "6001") {
+                                    if (errorResponse.data.code == "25018") {
 
                                         $scope.login();
 
@@ -473,11 +468,11 @@
 
                      function (errorResponse) {
 
-                        if (errorResponse.data.error.code == "6001") {
+                        if (errorResponse.data.code == "25018") {
 
                             $scope.login();
 
-                        } else  if(errorResponse.data.error.code == "3072"){
+                        } else  if(errorResponse.data.code == "3072"){
 
                             $scope.executeReport(fileName, region, state);
 
@@ -499,7 +494,6 @@
 
                     search : '/Home/Flight Delay App/Flight Performance.rptdesign',
 
-                    authId: $rootScope.AuthId
 
                 };
 
@@ -513,7 +507,7 @@
 
                         function (dataResponse) {
 
-                            $rootScope.reportId = dataResponse.ItemList.File[0].Id;
+                            $rootScope.reportId = dataResponse.itemList.file[0].id;
 
 
 
@@ -533,7 +527,7 @@
 
                             params = {
 
-                                reportsId : dataResponse.ItemList.File[0].Id,    
+                                reportId : dataResponse.itemList.file[0].id,    
 
                                 paramValues : angular.toJson(paramValues, false),               
 
@@ -543,7 +537,6 @@
 
                                 requestedOutputFile : fileName,
 
-                                authId: $rootScope.AuthId
 
                             };
 
@@ -569,7 +562,7 @@
 
                         function (errorResponse) {
 
-                            if (errorResponse.data.error.code == "6001") {
+                            if (errorResponse.data.code == "25018") {
 
                                 $scope.login();
 
@@ -597,7 +590,7 @@
 
                     params = {
 
-                        reportsId : $rootScope.reportId,    
+                        reportId : $rootScope.reportId,    
 
                         paramValues : angular.toJson(paramValues, false),                
 
@@ -607,7 +600,6 @@
 
                         requestedOutputFile : fileName,
 
-                        authId: $rootScope.AuthId
 
                     };
 
@@ -623,7 +615,7 @@
 
                         function (errorResponse) {
 
-                           if (errorResponse.data.error.code == "6001") {
+                           if (errorResponse.data.code == "25018") {
 
                                 $scope.login();
 
